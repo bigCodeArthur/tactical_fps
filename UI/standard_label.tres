@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bme7pm3n8tu1q"]
+
+[ext_resource type="FontFile" uid="uid://cfkw4834fvjn5" path="res://imports/venus_rising/Venus Rising Rg.otf" id="1_sgxhb"]
+
+[resource]
+resource_name = "Standard label"
+font = ExtResource("1_sgxhb")
+font_size = 32

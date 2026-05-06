@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Mag" format=3 uid="uid://cjuq75aij58h2"]
+
+[ext_resource type="Script" uid="uid://br12uoyf1cem4" path="res://guns/mags/mag.gd" id="1_q5iu5"]
+
+[resource]
+resource_name = "Standard_9mm"
+script = ExtResource("1_q5iu5")
+max_ammo = 18
+ammo = 18
+metadata/_custom_type_script = "uid://br12uoyf1cem4"

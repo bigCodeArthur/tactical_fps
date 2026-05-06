@@ -1,0 +1,228 @@
+[gd_scene format=3 uid="uid://ci02fdvrohih8"]
+
+[ext_resource type="Script" uid="uid://e0y6a2idjaqi" path="res://player/player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dqc0y62h42h3y" path="res://player/weapon_manager.gd" id="2_hg6s5"]
+[ext_resource type="Script" uid="uid://bc3u7ec3klu57" path="res://player/head.gd" id="2_onrkg"]
+[ext_resource type="Resource" uid="uid://557et12w1ytj" path="res://guns/HK33.tres" id="3_8t03j"]
+[ext_resource type="Script" uid="uid://de5p4w1njuji3" path="res://player/lean_pivot.gd" id="4_1jxqw"]
+[ext_resource type="Script" uid="uid://br12uoyf1cem4" path="res://guns/mags/mag.gd" id="4_ebec5"]
+[ext_resource type="Resource" uid="uid://cjuq75aij58h2" path="res://guns/mags/standard_9mm.tres" id="5_yllr7"]
+[ext_resource type="AudioStream" uid="uid://g00370uk6ud5" path="res://imports/GUN_FIRE-GoodSoundForYou-820112263.wav" id="6_2hs0m"]
+[ext_resource type="Script" uid="uid://deygle8bntxfp" path="res://player/bullet_spawn_point.gd" id="6_8t03j"]
+[ext_resource type="Material" uid="uid://d0b78poe6onmm" path="res://new_shader_material.tres" id="7_hg6s5"]
+[ext_resource type="Texture2D" uid="uid://cfudnoan6262o" path="res://imports/test.png" id="8_dw050"]
+[ext_resource type="Script" uid="uid://bnf3hnqird7w8" path="res://player/flipbook3d.gd" id="8_hg6s5"]
+[ext_resource type="Texture2D" uid="uid://d211txdf5vpoe" path="res://UI/mag_status.png" id="12_wodsf"]
+[ext_resource type="LabelSettings" uid="uid://bme7pm3n8tu1q" path="res://UI/standard_label.tres" id="13_wodsf"]
+[ext_resource type="Script" uid="uid://b0cvuwctq768l" path="res://player/player_gun_audio.gd" id="13_yllr7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+radius = 0.25
+
+[sub_resource type="QuadMesh" id="QuadMesh_i3pqv"]
+material = ExtResource("7_hg6s5")
+size = Vector2(1.8, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_sweqy"]
+material = ExtResource("7_hg6s5")
+size = Vector2(1.8, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dw050"]
+radius = 0.13905811
+
+[node name="Player" type="CharacterBody3D" unique_id=1167407203 node_paths=PackedStringArray("lean_pivot")]
+collision_layer = 0
+script = ExtResource("1_4flbx")
+JUMP_VELOCITY = 6.0
+lean_pivot = NodePath("LeanPivot")
+
+[node name="weaponManager" type="Node" parent="." unique_id=1527794984 node_paths=PackedStringArray("player", "bullet_spawner", "gun_reticle", "gun_audio", "gun_mesh", "mag_mesh")]
+unique_name_in_owner = true
+script = ExtResource("2_hg6s5")
+ammo = 100
+gun = ExtResource("3_8t03j")
+mags = Array[ExtResource("4_ebec5")]([ExtResource("5_yllr7"), ExtResource("5_yllr7"), ExtResource("5_yllr7")])
+player = NodePath("..")
+bullet_spawner = NodePath("../LeanPivot/Head/Camera3D/BulletSpawner")
+gun_reticle = NodePath("../LeanPivot/Head/Camera3D/Reticle")
+gun_audio = NodePath("../PlayerGunAudio")
+gun_mesh = NodePath("../LeanPivot/Head/Camera3D/GunMesh")
+mag_mesh = NodePath("../LeanPivot/Head/Camera3D/MagMesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1664553167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="LeanPivot" type="Node3D" parent="." unique_id=1173431879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("4_1jxqw")
+
+[node name="Head" type="Node3D" parent="LeanPivot" unique_id=435105577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.79999995, 0)
+script = ExtResource("2_onrkg")
+
+[node name="Camera3D" type="Camera3D" parent="LeanPivot/Head" unique_id=589259419]
+transform = Transform3D(1, 0, 0, 0, 0.9935719, -0.11320321, 0, 0.11320321, 0.9935719, 0, 0.20000005, 0)
+
+[node name="Reticle" type="Sprite3D" parent="LeanPivot/Head/Camera3D" unique_id=720554954]
+transform = Transform3D(0.008, 0, 0, 0, 0.007948576, 0.0009056257, 0, -0.0009056257, 0.007948576, 0, -0.017, -0.15)
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("8_dw050")
+
+[node name="BulletSpawner" type="Node3D" parent="LeanPivot/Head/Camera3D" unique_id=1329337711 node_paths=PackedStringArray("player", "weapon_manager", "bullet_target", "gun_audio")]
+transform = Transform3D(1, 0, 0, 0, 0.9935719, 0.11320321, 0, -0.11320321, 0.9935719, 0, -0.1605246, -0.25293738)
+script = ExtResource("6_8t03j")
+player = NodePath("../../../..")
+weapon_manager = NodePath("../../../../weaponManager")
+bullet_target = NodePath("../BulletTarget")
+gun_audio = NodePath("../../../../PlayerGunAudio")
+
+[node name="BulletTarget" type="RayCast3D" parent="LeanPivot/Head/Camera3D" unique_id=823812838]
+transform = Transform3D(1, 0, 0, 0, 0.9935719, 0.11320321, 0, -0.11320321, 0.9935719, 0, -0.03091085, -0.2713015)
+target_position = Vector3(0, 0, -1)
+
+[node name="GunMesh" type="MeshInstance3D" parent="LeanPivot/Head/Camera3D" unique_id=1955271728]
+transform = Transform3D(0.2, 0, 0, 0, 0.19871438, 0.022640644, 0, -0.022640644, 0.19871438, 0, -0.018795729, -0.16496831)
+mesh = SubResource("QuadMesh_i3pqv")
+script = ExtResource("8_hg6s5")
+
+[node name="MagMesh" type="MeshInstance3D" parent="LeanPivot/Head/Camera3D" unique_id=523385839]
+transform = Transform3D(0.2, 0, 0, 0, 0.19871438, 0.022640644, 0, -0.022640644, 0.19871438, 0, -0.018795729, -0.16496831)
+visible = false
+mesh = SubResource("QuadMesh_sweqy")
+script = ExtResource("8_hg6s5")
+
+[node name="LeanChecker" type="Area3D" parent="LeanPivot/Head" unique_id=1985773400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20000005, -0.6)
+monitorable = false
+
+[node name="CheckerShape" type="CollisionShape3D" parent="LeanPivot/Head/LeanChecker" unique_id=1987299042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.14297134)
+shape = SubResource("SphereShape3D_dw050")
+
+[node name="PlayerGunAudio" type="AudioStreamPlayer" parent="." unique_id=511243284]
+stream = ExtResource("6_2hs0m")
+volume_db = -12.0
+max_polyphony = 5
+script = ExtResource("13_yllr7")
+
+[node name="UI" type="Control" parent="." unique_id=1181730140]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Status" type="Control" parent="UI" unique_id=943205889]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -117.0
+offset_right = 158.0
+grow_vertical = 0
+pivot_offset = Vector2(0, 117)
+
+[node name="Gun" type="Control" parent="UI" unique_id=631609746]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -117.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(154, 117)
+
+[node name="Mags" type="Control" parent="UI" unique_id=488543104]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -269.0
+offset_top = -251.0
+offset_right = 284.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(269, 117)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/Mags" unique_id=1990290683]
+modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_wodsf")
+patch_margin_left = 75
+patch_margin_top = 75
+patch_margin_right = 75
+patch_margin_bottom = 75
+
+[node name="Ammo" type="Control" parent="UI" unique_id=1173158205]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+metadata/_edit_use_anchors_ = true
+
+[node name="AmmoCounter" type="Label" parent="UI/Ammo" unique_id=950939265]
+modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -40.5
+offset_right = 30.0
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 40.5)
+text = "27
+"
+label_settings = ExtResource("13_wodsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AmmoUnit" type="Label" parent="UI/Ammo/AmmoCounter" unique_id=122588255]
+modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -40.5
+offset_right = 99.0
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+pivot_offset = Vector2(99, 40.5)
+text = "
+rounds"
+label_settings = ExtResource("13_wodsf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="LeanPivot/Head/LeanChecker" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="LeanPivot/Head/LeanChecker" to="." method="_on_area_3d_body_exited"]

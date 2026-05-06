@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cmche36apksdq"]
+
+[ext_resource type="PackedScene" uid="uid://dbqgblk5c4ii3" path="res://level.tscn" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://ci02fdvrohih8" path="res://player/player.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://c3wjry5htc4fp" path="res://imports/citrus_orchard_puresky_2k.exr" id="2_0xm2m"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
+panorama = ExtResource("2_0xm2m")
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("PanoramaSkyMaterial_h2yge")
+
+[sub_resource type="Environment" id="Environment_lquwl"]
+background_mode = 2
+sky = SubResource("Sky_1bvp3")
+glow_enabled = true
+volumetric_fog_density = 0.005
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7mycd"]
+auto_exposure_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=857044141]
+
+[node name="Level" parent="." unique_id=1700955827 instance=ExtResource("1_h2yge")]
+
+[node name="Player" parent="." unique_id=1167407203 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0.93226457, 0, 0.78324366)
+SPEED = 10.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=385874573]
+environment = SubResource("Environment_lquwl")
+camera_attributes = SubResource("CameraAttributesPractical_7mycd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=1399828099]
+transform = Transform3D(0.21790473, 0.25259966, -0.94271463, 1.1313338e-08, 0.9659259, 0.25881907, 0.97597003, -0.05639791, 0.21047981, 0, 1.6034689, 0)
+shadow_enabled = true

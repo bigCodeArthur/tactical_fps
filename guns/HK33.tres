@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Gun" format=3 uid="uid://557et12w1ytj"]
+
+[ext_resource type="Resource" uid="uid://cjuq75aij58h2" path="res://guns/mags/standard_9mm.tres" id="1_7h22v"]
+[ext_resource type="Script" uid="uid://pvy4a8nhhto5" path="res://guns/gun.gd" id="1_44ujq"]
+[ext_resource type="Texture2D" uid="uid://bh7q20r4n6e77" path="res://AR_TEST/sprite_sheet.png" id="2_l6q5m"]
+
+[resource]
+resource_name = "HK33"
+script = ExtResource("1_44ujq")
+sprite_sheet = ExtResource("2_l6q5m")
+rows = 8
+columns = 8
+bullet_vertical_offset = -0.18
+bullet_aim_vertical_offset = -0.1
+mag = ExtResource("1_7h22v")
+metadata/_custom_type_script = "uid://pvy4a8nhhto5"

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2ao0bpu7qxi5"
+path="res://.godot/imported/Dry Fire Gun-SoundBible.com-2053652037.wav-e6b8e6cdd80c8d6631d191a627f462d0.sample"
+
+[deps]
+
+source_file="res://imports/Dry Fire Gun-SoundBible.com-2053652037.wav"
+dest_files=["res://.godot/imported/Dry Fire Gun-SoundBible.com-2053652037.wav-e6b8e6cdd80c8d6631d191a627f462d0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

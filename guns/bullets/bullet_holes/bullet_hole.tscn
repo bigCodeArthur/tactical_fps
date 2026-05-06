@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ryv0adamairv"]
+
+[ext_resource type="Script" uid="uid://bgbs4km8dvptg" path="res://guns/bullets/bullet_holes/bullet_hole.gd" id="1_lbt6d"]
+[ext_resource type="Texture2D" uid="uid://dxetrcgmtelo3" path="res://guns/bullets/bullet_holes/row-1-column-1.png" id="2_iqcmi"]
+
+[node name="BulletHole" type="Node3D" unique_id=697502363]
+script = ExtResource("1_lbt6d")
+
+[node name="Decal" type="Decal" parent="." unique_id=1590081893]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.0011215014, 0.0002581179)
+size = Vector3(0.3, 0.1294632, 0.3)
+texture_albedo = ExtResource("2_iqcmi")
+normal_fade = 0.5

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dd8q3wwhmbqcn"]
+
+[ext_resource type="Script" uid="uid://du4qry8765pkj" path="res://guns/bullets/basic_bullet.gd" id="1_qm1da"]
+[ext_resource type="Material" uid="uid://dmsobeyh3t038" path="res://bullet_material_3d.tres" id="2_suok5"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qm1da"]
+material = ExtResource("2_suok5")
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.7
+radial_segments = 8
+
+[node name="BasicBullet" type="Node3D" unique_id=967121982]
+script = ExtResource("1_qm1da")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1000385973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.19170119)
+light_energy = 3.0
+omni_range = 2.0
+omni_attenuation = 2.0
+
+[node name="Pivot" type="Node3D" parent="." unique_id=1135788420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot" unique_id=517586697]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -0.15399747)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_qm1da")
+
+[node name="RayCast3D" type="RayCast3D" parent="Pivot" unique_id=1331459680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.20274588)
+target_position = Vector3(0, 0, -1.2)
+hit_from_inside = true
