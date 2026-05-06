@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://d16reqe1hh8sb"]
+
+[ext_resource type="Texture2D" uid="uid://c0r5d2utl7inc" path="res://UI/smg_mag.png" id="1_f4yfu"]
+[ext_resource type="Texture2D" uid="uid://d211txdf5vpoe" path="res://UI/mag_status.png" id="2_nwpm1"]
+[ext_resource type="Texture2D" uid="uid://djqcqijfem7io" path="res://UI/gun_Status.png" id="3_nwpm1"]
+
+[node name="MarginContainer" type="MarginContainer" unique_id=859471287]
+size_flags_horizontal = 6
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="." unique_id=2064853779]
+custom_minimum_size = Vector2(100, 125)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("2_nwpm1")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 47
+patch_margin_top = 47
+patch_margin_right = 47
+patch_margin_bottom = 47
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=528441299]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=376350466]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1538507135]
+layout_mode = 2
+texture = ExtResource("1_f4yfu")
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect5" unique_id=2098714576]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_nwpm1")
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=821293535]
+layout_mode = 2
+texture = ExtResource("1_f4yfu")
+stretch_mode = 3
+
+[node name="TextureRect7" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1958160151]
+layout_mode = 2
+texture = ExtResource("1_f4yfu")
+stretch_mode = 3

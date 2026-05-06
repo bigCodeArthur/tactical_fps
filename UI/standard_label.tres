@@ -5,4 +5,4 @@
 [resource]
 resource_name = "Standard label"
 font = ExtResource("1_sgxhb")
-font_size = 32
+font_size = 38

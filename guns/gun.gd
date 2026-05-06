@@ -45,7 +45,7 @@ func unload_mag():
 	pass
 
 
-func load_mag(mag: Mag):
+func load_mag(_mag: Mag):
 	pass
 
 

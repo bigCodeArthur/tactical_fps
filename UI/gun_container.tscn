@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://3d4arnaf0icn"]
+
+[ext_resource type="Texture2D" uid="uid://ch4dlok7bfuh8" path="res://UI/sg.png" id="1_dviuq"]
+[ext_resource type="Texture2D" uid="uid://c6od7u0y27ybx" path="res://UI/smg.png" id="1_sf3bl"]
+[ext_resource type="Texture2D" uid="uid://djqcqijfem7io" path="res://UI/gun_Status.png" id="2_difhg"]
+[ext_resource type="Texture2D" uid="uid://cottjv6kul8fy" path="res://UI/pistol.png" id="3_05kn5"]
+[ext_resource type="Texture2D" uid="uid://0r40mujhcmm0" path="res://UI/ar.png" id="4_r1vl8"]
+[ext_resource type="Texture2D" uid="uid://d0t2fioa8h6ao" path="res://UI/sr.png" id="5_4kc3m"]
+
+[node name="GunContainer" type="MarginContainer" unique_id=1457011126]
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_left = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1935769791]
+layout_mode = 2
+texture = ExtResource("2_difhg")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 90
+patch_margin_top = 80
+patch_margin_right = 111
+patch_margin_bottom = 80
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=430352576]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=784243454]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Sg" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=2131929001]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("1_dviuq")
+
+[node name="Pistol" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=536557284]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("3_05kn5")
+
+[node name="Smg" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=890442666]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("1_sf3bl")
+
+[node name="Ar" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=364296614]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("4_r1vl8")
+
+[node name="Sr" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1497341581]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("5_4kc3m")

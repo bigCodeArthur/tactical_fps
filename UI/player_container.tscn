@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cb26r1elutyun"]
+
+[ext_resource type="Texture2D" uid="uid://d211txdf5vpoe" path="res://UI/mag_status.png" id="1_vkhij"]
+
+[node name="CenterContainer" type="MarginContainer" unique_id=1187705749]
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1532621857]
+custom_minimum_size = Vector2(500, 350)
+layout_mode = 2
+texture = ExtResource("1_vkhij")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 47
+patch_margin_top = 47
+patch_margin_right = 47
+patch_margin_bottom = 47
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2

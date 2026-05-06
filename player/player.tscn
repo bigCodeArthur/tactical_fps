@@ -12,9 +12,8 @@
 [ext_resource type="Material" uid="uid://d0b78poe6onmm" path="res://new_shader_material.tres" id="7_hg6s5"]
 [ext_resource type="Texture2D" uid="uid://cfudnoan6262o" path="res://imports/test.png" id="8_dw050"]
 [ext_resource type="Script" uid="uid://bnf3hnqird7w8" path="res://player/flipbook3d.gd" id="8_hg6s5"]
-[ext_resource type="Texture2D" uid="uid://d211txdf5vpoe" path="res://UI/mag_status.png" id="12_wodsf"]
-[ext_resource type="LabelSettings" uid="uid://bme7pm3n8tu1q" path="res://UI/standard_label.tres" id="13_wodsf"]
 [ext_resource type="Script" uid="uid://b0cvuwctq768l" path="res://player/player_gun_audio.gd" id="13_yllr7"]
+[ext_resource type="PackedScene" uid="uid://co1l0sgqt5xo6" path="res://UI/ui.tscn" id="14_kb6p2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 radius = 0.25
@@ -106,123 +105,7 @@ volume_db = -12.0
 max_polyphony = 5
 script = ExtResource("13_yllr7")
 
-[node name="UI" type="Control" parent="." unique_id=1181730140]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Status" type="Control" parent="UI" unique_id=943205889]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -117.0
-offset_right = 158.0
-grow_vertical = 0
-pivot_offset = Vector2(0, 117)
-
-[node name="Gun" type="Control" parent="UI" unique_id=631609746]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -154.0
-offset_top = -117.0
-grow_horizontal = 0
-grow_vertical = 0
-pivot_offset = Vector2(154, 117)
-
-[node name="Mags" type="Control" parent="UI" unique_id=488543104]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -269.0
-offset_top = -251.0
-offset_right = 284.0
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(269, 117)
-
-[node name="NinePatchRect" type="NinePatchRect" parent="UI/Mags" unique_id=1990290683]
-modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("12_wodsf")
-patch_margin_left = 75
-patch_margin_top = 75
-patch_margin_right = 75
-patch_margin_bottom = 75
-
-[node name="Ammo" type="Control" parent="UI" unique_id=1173158205]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(20, 20)
-metadata/_edit_use_anchors_ = true
-
-[node name="AmmoCounter" type="Label" parent="UI/Ammo" unique_id=950939265]
-modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -40.5
-offset_right = 30.0
-offset_bottom = 40.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(30, 40.5)
-text = "27
-"
-label_settings = ExtResource("13_wodsf")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AmmoUnit" type="Label" parent="UI/Ammo/AmmoCounter" unique_id=122588255]
-modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -99.0
-offset_top = -40.5
-offset_right = 99.0
-offset_bottom = 40.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.35, 0.35)
-pivot_offset = Vector2(99, 40.5)
-text = "
-rounds"
-label_settings = ExtResource("13_wodsf")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="UI" parent="." unique_id=648559121 instance=ExtResource("14_kb6p2")]
 
 [connection signal="body_entered" from="LeanPivot/Head/LeanChecker" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="LeanPivot/Head/LeanChecker" to="." method="_on_area_3d_body_exited"]
