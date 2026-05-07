@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3d4arnaf0icn" path="res://UI/gun_container.tscn" id="3_nm1m0"]
 
 [node name="UI" type="Control" unique_id=648559121]
-modulate = Color(0.8219819, 1.9692171, 1.642768, 1)
+modulate = Color(0.8210206, 1.9690473, 1.6429722, 0.1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,10 +36,10 @@ size_flags_vertical = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1011948409]
 layout_mode = 2
 
-[node name="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1187705749 instance=ExtResource("1_hat8c")]
+[node name="PlayerContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1187705749 instance=ExtResource("1_hat8c")]
 layout_mode = 2
 
-[node name="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=859471287 instance=ExtResource("2_3sbvi")]
+[node name="MagContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=859471287 instance=ExtResource("2_3sbvi")]
 layout_mode = 2
 size_flags_vertical = 8
 

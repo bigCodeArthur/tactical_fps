@@ -18,6 +18,12 @@ class_name WeaponManager extends Node
 
 
 func _process(_delta: float) -> void:
+	# TODO: get input
+	# TODO: check animation interupt
+
+
+
+
 	if gun_mesh.animation_lock or mag_mesh.animation_lock: return
 
 	if gun.current_state == Gun.state.DEFAULT: handle_default()
