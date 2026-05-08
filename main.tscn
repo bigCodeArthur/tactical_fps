@@ -2,10 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dbqgblk5c4ii3" path="res://level.tscn" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ci02fdvrohih8" path="res://player/player.tscn" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://c3wjry5htc4fp" path="res://imports/citrus_orchard_puresky_2k.exr" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://dwqr80k8dbpb6" path="res://imports/sky.hdr" id="3_h2yge"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
-panorama = ExtResource("2_0xm2m")
+panorama = ExtResource("3_h2yge")
+filter = false
 
 [sub_resource type="Sky" id="Sky_1bvp3"]
 sky_material = SubResource("PanoramaSkyMaterial_h2yge")
