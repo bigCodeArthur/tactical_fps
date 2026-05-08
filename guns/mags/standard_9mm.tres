@@ -6,5 +6,5 @@
 resource_name = "Standard_9mm"
 script = ExtResource("1_q5iu5")
 max_ammo = 18
-ammo = 18
+ammo = 0
 metadata/_custom_type_script = "uid://br12uoyf1cem4"

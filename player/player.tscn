@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bnf3hnqird7w8" path="res://player/flipbook3d.gd" id="8_hg6s5"]
 [ext_resource type="Script" uid="uid://b0cvuwctq768l" path="res://player/player_gun_audio.gd" id="13_yllr7"]
 [ext_resource type="PackedScene" uid="uid://co1l0sgqt5xo6" path="res://UI/ui.tscn" id="14_kb6p2"]
+[ext_resource type="Script" uid="uid://ba4aoj4rjb80o" path="res://UI/ui.gd" id="15_wodsf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 radius = 0.25
@@ -106,6 +107,7 @@ max_polyphony = 5
 script = ExtResource("13_yllr7")
 
 [node name="UI" parent="." unique_id=648559121 instance=ExtResource("14_kb6p2")]
+script = ExtResource("15_wodsf")
 
 [connection signal="body_entered" from="LeanPivot/Head/LeanChecker" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="LeanPivot/Head/LeanChecker" to="." method="_on_area_3d_body_exited"]
