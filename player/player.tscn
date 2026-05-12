@@ -14,27 +14,27 @@
 [ext_resource type="Script" uid="uid://bnf3hnqird7w8" path="res://player/flipbook3d.gd" id="8_hg6s5"]
 [ext_resource type="Script" uid="uid://b0cvuwctq768l" path="res://player/player_gun_audio.gd" id="13_yllr7"]
 [ext_resource type="PackedScene" uid="uid://co1l0sgqt5xo6" path="res://UI/ui.tscn" id="14_kb6p2"]
-[ext_resource type="Script" uid="uid://ba4aoj4rjb80o" path="res://UI/ui.gd" id="15_wodsf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 radius = 0.25
 
 [sub_resource type="QuadMesh" id="QuadMesh_i3pqv"]
 material = ExtResource("7_hg6s5")
-size = Vector2(1.8, 1)
+size = Vector2(2, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_sweqy"]
 material = ExtResource("7_hg6s5")
-size = Vector2(1.8, 1)
+size = Vector2(2, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dw050"]
 radius = 0.13905811
 
-[node name="Player" type="CharacterBody3D" unique_id=1167407203 node_paths=PackedStringArray("lean_pivot")]
+[node name="Player" type="CharacterBody3D" unique_id=1167407203 node_paths=PackedStringArray("lean_pivot", "weapon_manager")]
 collision_layer = 0
 script = ExtResource("1_4flbx")
 JUMP_VELOCITY = 6.0
 lean_pivot = NodePath("LeanPivot")
+weapon_manager = NodePath("weaponManager")
 
 [node name="weaponManager" type="Node" parent="." unique_id=1527794984 node_paths=PackedStringArray("player", "bullet_spawner", "gun_reticle", "gun_audio", "gun_mesh", "mag_mesh")]
 unique_name_in_owner = true
@@ -65,7 +65,7 @@ script = ExtResource("2_onrkg")
 transform = Transform3D(1, 0, 0, 0, 0.9935719, -0.11320321, 0, 0.11320321, 0.9935719, 0, 0.20000005, 0)
 
 [node name="Reticle" type="Sprite3D" parent="LeanPivot/Head/Camera3D" unique_id=720554954]
-transform = Transform3D(0.008, 0, 0, 0, 0.007948576, 0.0009056257, 0, -0.0009056257, 0.007948576, 0, -0.017, -0.15)
+transform = Transform3D(0.008, 0, 0, 0, 0.0079485765, 0.0009056258, 0, -0.0009056258, 0.0079485765, 0, -0.014414668, -0.1273086)
 modulate = Color(1, 0, 0, 1)
 texture = ExtResource("8_dw050")
 
@@ -82,12 +82,12 @@ transform = Transform3D(1, 0, 0, 0, 0.9935719, 0.11320321, 0, -0.11320321, 0.993
 target_position = Vector3(0, 0, -1)
 
 [node name="GunMesh" type="MeshInstance3D" parent="LeanPivot/Head/Camera3D" unique_id=1955271728]
-transform = Transform3D(0.2, 0, 0, 0, 0.19871438, 0.022640644, 0, -0.022640644, 0.19871438, 0, -0.018795729, -0.16496831)
+transform = Transform3D(0.2, 0, 0, 0, 0.20000003, 0, 0, 0, 0.20000003, 0, -0.015, -0.125)
 mesh = SubResource("QuadMesh_i3pqv")
 script = ExtResource("8_hg6s5")
 
 [node name="MagMesh" type="MeshInstance3D" parent="LeanPivot/Head/Camera3D" unique_id=523385839]
-transform = Transform3D(0.2, 0, 0, 0, 0.19871438, 0.022640644, 0, -0.022640644, 0.19871438, 0, -0.018795729, -0.16496831)
+transform = Transform3D(0.2, 0, 0, 0, 0.20000003, 0, 0, 0, 0.20000003, 0, -0.014, -0.125)
 visible = false
 mesh = SubResource("QuadMesh_sweqy")
 script = ExtResource("8_hg6s5")
@@ -106,8 +106,8 @@ volume_db = -12.0
 max_polyphony = 5
 script = ExtResource("13_yllr7")
 
-[node name="UI" parent="." unique_id=648559121 instance=ExtResource("14_kb6p2")]
-script = ExtResource("15_wodsf")
+[node name="UI" parent="." unique_id=648559121 node_paths=PackedStringArray("player") instance=ExtResource("14_kb6p2")]
+player = NodePath("..")
 
 [connection signal="body_entered" from="LeanPivot/Head/LeanChecker" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="LeanPivot/Head/LeanChecker" to="." method="_on_area_3d_body_exited"]

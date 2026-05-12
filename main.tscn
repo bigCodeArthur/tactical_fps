@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dbqgblk5c4ii3" path="res://level.tscn" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ci02fdvrohih8" path="res://player/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dwqr80k8dbpb6" path="res://imports/sky.hdr" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bh7q20r4n6e77" path="res://AR_TEST/sprite_sheet.png" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://c0ccy2iuwbqpa" path="res://AR_TEST/sprite_sheet_normal.png" id="5_lquwl"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
 panorama = ExtResource("3_h2yge")
@@ -20,6 +22,19 @@ volumetric_fog_density = 0.005
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7mycd"]
 auto_exposure_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+transparency = 4
+albedo_texture = ExtResource("4_lquwl")
+normal_enabled = true
+normal_texture = ExtResource("5_lquwl")
+bent_normal_texture = ExtResource("5_lquwl")
+uv1_scale = Vector3(0.125, 0.125, 0.125)
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_h2yge"]
+material = SubResource("StandardMaterial3D_1bvp3")
+size = Vector2(2, 1)
+
 [node name="Node3D" type="Node3D" unique_id=857044141]
 
 [node name="Level" parent="." unique_id=1700955827 instance=ExtResource("1_h2yge")]
@@ -35,3 +50,7 @@ camera_attributes = SubResource("CameraAttributesPractical_7mycd")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=1399828099]
 transform = Transform3D(0.21790473, 0.25259966, -0.94271463, 1.1313338e-08, 0.9659259, 0.25881907, 0.97597003, -0.05639791, 0.21047981, 0, 1.6034689, 0)
 shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=532661276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0022637248, 1.7954038, -9.7453594e-05)
+mesh = SubResource("QuadMesh_h2yge")

@@ -2,11 +2,11 @@ shader_type spatial;
 render_mode cull_back, depth_draw_opaque;
 
 // === TEXTURES ===
-uniform sampler2D albedo_texture : source_color;
+uniform sampler2D albedo_texture : source_color, filter_nearest;
 uniform bool use_normal_map = false;
 uniform sampler2D normal_texture : hint_normal;
 uniform bool use_orm_map = false;
-uniform sampler2D orm_texture; // AO (R), Roughness (G), Metallic (B)
+uniform sampler2D orm_texture : filter_nearest; // AO (R), Roughness (G), Metallic (B)
 
 // === ATLAS SETTINGS ===
 uniform vec2 atlas_size = vec2(4.0, 4.0); // columns, rows
@@ -58,6 +58,7 @@ void fragment() {
 	
 	if (use_normal_map) {
 		NORMAL_MAP = texture(normal_texture, uv).rgb;
+		NORMAL_MAP_DEPTH = 0.6;
 	} else {
 		NORMAL_MAP = vec3(0.5, 0.5, 1.0);
 	}

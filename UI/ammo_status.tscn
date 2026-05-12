@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cwjluhnyxr2kg"]
 
+[ext_resource type="Script" uid="uid://bdju0hmjosb0c" path="res://UI/ammo_status.gd" id="1_b2fuf"]
 [ext_resource type="Texture2D" uid="uid://u4rdnoopbie0" path="res://UI/ammo_Status.png" id="1_l1pvu"]
 [ext_resource type="LabelSettings" uid="uid://bme7pm3n8tu1q" path="res://UI/standard_label.tres" id="1_yvued"]
 [ext_resource type="LabelSettings" uid="uid://cnxnsrycr6d60" path="res://UI/standard_label_minor.tres" id="2_l1pvu"]
+[ext_resource type="Texture2D" uid="uid://ci3b5ir4qem7m" path="res://UI/ammo_Status_clipper.png" id="2_qikip"]
 
 [node name="AmmoStatus" type="Control" unique_id=1964406209]
 layout_mode = 3
@@ -13,9 +15,10 @@ anchor_bottom = 0.136
 offset_left = -232.70401
 offset_top = -176.25601
 offset_right = 0.29599
-offset_bottom = -0.25601196
+offset_bottom = -48.256012
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_b2fuf")
 
 [node name="TextureRect" type="NinePatchRect" parent="." unique_id=1178347926]
 layout_mode = 1
@@ -25,37 +28,55 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_l1pvu")
-region_rect = Rect2(0, 0, 240, 240)
-patch_margin_left = 13
-patch_margin_top = 13
-patch_margin_right = 93
-patch_margin_bottom = 94
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 46
+patch_margin_bottom = 46
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=109243910]
+[node name="TextureRect" type="NinePatchRect" parent="TextureRect" unique_id=63169031]
+clip_children = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_right = 80
-theme_override_constants/margin_bottom = 80
+texture = ExtResource("2_qikip")
+region_rect = Rect2(0, 0, 120, 120)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 46
+patch_margin_bottom = 46
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=761292669]
-clip_children = 2
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect" unique_id=109243910]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 43
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect/TextureRect/MarginContainer" unique_id=761292669]
 layout_mode = 2
 
-[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer" unique_id=889731460]
+[node name="HBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/MarginContainer/CenterContainer" unique_id=889731460]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer" unique_id=2081400376]
+[node name="Amount" type="Label" parent="TextureRect/TextureRect/MarginContainer/CenterContainer/HBoxContainer" unique_id=2081400376]
 layout_mode = 2
 text = "27"
 label_settings = ExtResource("1_yvued")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer" unique_id=569641036]
+[node name="Unit" type="Label" parent="TextureRect/TextureRect/MarginContainer/CenterContainer/HBoxContainer" unique_id=569641036]
 layout_mode = 2
 text = "rounds"
 label_settings = ExtResource("2_l1pvu")

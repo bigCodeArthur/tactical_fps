@@ -76,9 +76,6 @@ func handle_default():
 
 
 func handle_aiming():
-	if Input.is_action_just_pressed("fire") and gun.mag.ammo == 0:
-		gun_audio.play_sound()
-
 	if not Input.is_action_pressed("aim"):
 		bullet_spawner.position.y = gun.bullet_vertical_offset
 		gun_reticle.visible = true
@@ -87,6 +84,9 @@ func handle_aiming():
 		gun_mesh.fallback_frame = gun.get_fallback_frame()
 		gun_mesh.play_animation(1, 7, 0)
 		return
+
+	if Input.is_action_just_pressed("fire") and gun.mag.ammo == 0:
+		gun_audio.play_sound()
 
 	if Input.is_action_pressed("fire"):
 		if not bullet_spawner.fire_bullet(): return
@@ -107,6 +107,7 @@ func handle_cocked():
 		gun_mesh.fallback_frame = gun.get_fallback_frame()
 		gun_mesh.play_animation(5, 3, 0)
 		return
+
 	if Input.is_action_just_pressed("reload"):
 		mag_mesh.fallback_frame = gun.mag.get_fallback_frame()
 		var mag_visible := func(): mag_mesh.visible = true
@@ -143,7 +144,7 @@ func handle_unloaded():
 		ammo -= 1
 
 		mag_mesh.fallback_frame = gun.mag.get_fallback_frame()
-		mag_mesh.play_animation(4, 2 + offset, 4 + offset, func(): print(gun.mag.ammo))
+		mag_mesh.play_animation(4, 2 + offset, 4 + offset)
 		return
 
 	if Input.is_action_just_pressed("aim"):
@@ -153,5 +154,5 @@ func handle_unloaded():
 		var offset = 0 if gun.mag.ammo <= 0 else 3
 
 		mag_mesh.fallback_frame = gun.mag.get_fallback_frame()
-		mag_mesh.play_animation(4, 4 + offset, 2 + offset, func(): print(ammo))
+		mag_mesh.play_animation(4, 4 + offset, 2 + offset)
 		return

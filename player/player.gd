@@ -13,6 +13,8 @@ var last_save_pos = position
 @export var lean_pivot : Node3D
 @export var lean_amount : float = 0.5
 
+@export var weapon_manager: WeaponManager
+
 @onready var head: Head = $LeanPivot/Head
 @onready var lean_checker: Area3D = $LeanPivot/Head/LeanChecker
 var lean_checker_timer: float = 10

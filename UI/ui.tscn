@@ -1,18 +1,20 @@
 [gd_scene format=3 uid="uid://co1l0sgqt5xo6"]
 
+[ext_resource type="Script" uid="uid://ba4aoj4rjb80o" path="res://UI/ui.gd" id="1_3sbvi"]
 [ext_resource type="PackedScene" uid="uid://cb26r1elutyun" path="res://UI/player_container.tscn" id="1_hat8c"]
 [ext_resource type="PackedScene" uid="uid://d16reqe1hh8sb" path="res://UI/ammo_container.tscn" id="2_3sbvi"]
 [ext_resource type="PackedScene" uid="uid://cwjluhnyxr2kg" path="res://UI/ammo_status.tscn" id="3_e6gg6"]
 [ext_resource type="PackedScene" uid="uid://3d4arnaf0icn" path="res://UI/gun_container.tscn" id="3_nm1m0"]
 
 [node name="UI" type="Control" unique_id=648559121]
-modulate = Color(0.8210206, 1.9690473, 1.6429722, 0.1)
+modulate = Color(0.7350242, 1.2871853, 1.8046126, 0.36200002)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3sbvi")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=927291731]
 layout_mode = 1
@@ -26,27 +28,19 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=645182827]
+[node name="PlayerContainer" parent="MarginContainer" unique_id=1187705749 instance=ExtResource("1_hat8c")]
 layout_mode = 2
 
-[node name="Filler" type="Control" parent="MarginContainer/VBoxContainer" unique_id=2035176275]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1011948409]
-layout_mode = 2
-
-[node name="PlayerContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1187705749 instance=ExtResource("1_hat8c")]
-layout_mode = 2
-
-[node name="MagContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=859471287 instance=ExtResource("2_3sbvi")]
+[node name="MagContainer" parent="MarginContainer" unique_id=859471287 instance=ExtResource("2_3sbvi")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="GunContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1457011126 instance=ExtResource("3_nm1m0")]
+[node name="GunContainer" parent="MarginContainer" unique_id=1457011126 instance=ExtResource("3_nm1m0")]
 layout_mode = 2
 
 [node name="AmmoStatus" parent="." unique_id=634173944 instance=ExtResource("3_e6gg6")]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -54,7 +48,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -278.0
-offset_top = -445.0
+offset_top = -367.0
 offset_right = -13.0
 offset_bottom = -240.0
 grow_vertical = 0

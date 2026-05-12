@@ -2,12 +2,14 @@
 
 [ext_resource type="Shader" uid="uid://dgra6ldxsqkk5" path="res://new_shader_material.gdshader" id="1_50bgh"]
 [ext_resource type="Texture2D" uid="uid://bh7q20r4n6e77" path="res://AR_TEST/sprite_sheet.png" id="2_cabul"]
+[ext_resource type="Texture2D" uid="uid://c0ccy2iuwbqpa" path="res://AR_TEST/sprite_sheet_normal.png" id="3_4v1gg"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_50bgh")
 shader_parameter/albedo_texture = ExtResource("2_cabul")
-shader_parameter/use_normal_map = false
+shader_parameter/use_normal_map = true
+shader_parameter/normal_texture = ExtResource("3_4v1gg")
 shader_parameter/use_orm_map = false
 shader_parameter/atlas_size = Vector2(8, 8)
 shader_parameter/tile_padding = Vector2(0, 0)
